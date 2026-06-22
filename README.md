@@ -1,12 +1,101 @@
-# React + Vite
+# Leave Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based Leave Management System built with React that allows employees to apply for leaves and admins to manage them.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React + Vite
+- Tailwind CSS
+- React Router DOM
+- JSON Server (mock backend)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Employee**
+
+- Login and access dashboard
+- Apply for leave
+- View leave history and status
+
+**Admin**
+
+- Login and access admin dashboard
+- View all employee leave requests
+- Approve or reject leaves
+
+## Folder Structure
+
+```
+src/
+├── components/
+│   ├── Navbar.jsx
+│   └── ProtectedRoute.jsx
+├── pages/
+│   ├── LoginPage.jsx
+│   ├── Dashboard.jsx
+│   ├── LeaveForm.jsx
+│   ├── LeaveHistory.jsx
+│   └── AdminDashboard.jsx
+├── services/
+│   ├── authService.js
+│   └── leaveService.js
+├── utils/
+│   └── helpers.js
+├── App.jsx
+└── main.jsx
+```
+
+## Getting Started
+
+1. Clone the repo
+
+```bash
+git clone https://github.com/SiddhantDwivedi1/Leave-Management-System.git
+cd Leave-Management-System
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Start JSON Server
+
+```bash
+npx json-server db.json --port 5000
+```
+
+4. Start the app
+
+```bash
+npm run dev
+```
+
+5. Open in browser
+
+```
+http://localhost:5174/
+```
+
+## Login Credentials
+
+**Employee (1)**
+
+- Email: siddhant@company.com
+- Password: sid123
+
+**Employee (2)**
+
+- Email: rashi@company.com
+- Password: rashi123
+
+**Admin**
+
+- Email: admin@company.com
+- Password: admin123
+
+## Author
+
+Siddhant Dwivedi  
+[GitHub](https://github.com/SiddhantDwivedi1) • [LinkedIn](https://linkedin.com/in/siddhantdwivedi25)
