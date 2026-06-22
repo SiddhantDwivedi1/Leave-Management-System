@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
 
-
+// Login page
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -11,16 +11,33 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     /**
-     * @param {Event} e - Form submit event
+     * Handles login form submission
+     * @param {Event} e - Click event
      */
     const handleLogin = async (e) => {
         e.preventDefault();
         setError("");
+
+        // Frontend validation
+        if (!email.trim() || !password.trim()) {
+            setError("Email and password are required.");
+            return;
+        }
+
         setLoading(true);
         try {
             const user = await loginUser(email, password);
-
-            sessionStorage.setItem("user", JSON.stringify(user));
+            // Store only basic user info in session, not leaveBalance
+            sessionStorage.setItem(
+                "user",
+                JSON.stringify({
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    role: user.role,
+                })
+            );
+            console.info("[AUTH] Session created for:", user.name);
             user.role === "admin" ? navigate("/admin") : navigate("/dashboard");
         } catch (err) {
             setError("Invalid email or password. Please try again.");
@@ -32,8 +49,12 @@ const LoginPage = () => {
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-blue-100 flex items-center justify-center">
             <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-                <h2 className="text-3xl font-bold text-blue-700 mb-2 text-center">LMS</h2>
-                <p className="text-center text-gray-500 mb-6 text-sm">Leave Management System</p>
+                <h2 className="text-3xl font-bold text-blue-700 mb-2 text-center">
+                    LMS
+                </h2>
+                <p className="text-center text-gray-500 mb-6 text-sm">
+                    Leave Management System
+                </p>
 
                 {error && (
                     <div className="bg-red-50 text-red-600 text-sm px-4 py-2 rounded mb-4 border border-red-200">
@@ -69,7 +90,7 @@ const LoginPage = () => {
                     <button
                         onClick={handleLogin}
                         disabled={loading}
-                        className="bg-blue-700 text-white py-2 rounded-lg hover:bg-blue-800 transition font-medium disabled:opacity-60"
+                        className="bg-blue-700 text-white py-2 rounded-lg hover:bg-blue-800 transition font-medium disabled:opacity-60 cursor-pointer"
                     >
                         {loading ? "Logging in..." : "Login"}
                     </button>

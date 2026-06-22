@@ -1,35 +1,33 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Siddhant",
       "email": "siddhant@company.com",
       "password": "sid123",
       "role": "employee",
       "leaveBalance": {
-        "Sick Leave": 5,
+        "Sick Leave": 10,
         "Casual Leave": 8,
         "Earned Leave": 15,
-        "Leave Without Pay": 30,
         "Other": 5
       }
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Rashi",
       "email": "rashi@company.com",
       "password": "rashi123",
       "role": "employee",
       "leaveBalance": {
-        "Sick Leave": 4,
+        "Sick Leave": 10,
         "Casual Leave": 8,
         "Earned Leave": 15,
-        "Leave Without Pay": 30,
         "Other": 5
       }
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Admin",
       "email": "admin@company.com",
       "password": "admin123",
@@ -38,11 +36,9 @@
         "Sick Leave": 10,
         "Casual Leave": 8,
         "Earned Leave": 15,
-        "Leave Without Pay": 30,
         "Other": 5
       }
     }
   ],
-  
   "leaves": []
 }

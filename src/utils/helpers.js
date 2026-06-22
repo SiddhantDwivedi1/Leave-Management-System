@@ -1,7 +1,7 @@
 /**
  * Formats a date string to DD/MM/YYYY
- * @param {string} dateStr
- * @returns {string}
+ * @param {string} dateStr - Date string
+ * @returns {string} - Formatted date
  */
 export const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -9,10 +9,10 @@ export const formatDate = (dateStr) => {
 };
 
 /**
- * Calculates number of days between two dates
- * @param {string} startDate
- * @param {string} endDate
- * @returns {number}
+ * Calculetes number of days between two dates
+ * @param {string} startDate - Start date string
+ * @param {string} endDate - End date string
+ * @returns {number} - Number of days
  */
 export const calculateDays = (startDate, endDate) => {
   const start = new Date(startDate);
@@ -23,8 +23,8 @@ export const calculateDays = (startDate, endDate) => {
 
 /**
  * Returns Tailwind CSS color class based on leave status
- * @param {string} status
- * @returns {string}
+ * @param {string} status - Leave status
+ * @returns {string} - Tailwind class string
  */
 export const getStatusColor = (status) => {
   switch (status) {

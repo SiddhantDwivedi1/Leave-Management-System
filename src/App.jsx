@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
 import LeaveForm from "./pages/LeaveForm";
@@ -8,12 +8,16 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 
 const App = () => {
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
   return (
     <BrowserRouter>
       <Routes>
 
+        {/* Public route */}
         <Route path="/" element={<LoginPage />} />
 
+        {/* Employee routes */}
         <Route
           path="/dashboard"
           element={
@@ -39,12 +43,24 @@ const App = () => {
           }
         />
 
+        {/* Admin route */}
         <Route
           path="/admin"
           element={
             <ProtectedRoute requiredRole="admin">
               <AdminDashboard />
             </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="*"
+          element={
+            user
+              ? user.role === "admin"
+                ? <Navigate to="/admin" />
+                : <Navigate to="/dashboard" />
+              : <Navigate to="/" />
           }
         />
       </Routes>
