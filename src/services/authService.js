@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://leave-management-system-wm59.onrender.com";
 
 /**
  * Authenticates user by email and password

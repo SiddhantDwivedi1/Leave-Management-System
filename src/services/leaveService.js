@@ -1,5 +1,4 @@
-const BASE_URL = "http://localhost:5000";
-
+const BASE_URL = "https://leave-management-system-wm59.onrender.com";
 /**
  * Fetches all leave requests
  * @param {number} userId - The ID of the user
